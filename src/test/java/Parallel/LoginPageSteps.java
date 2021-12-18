@@ -19,7 +19,7 @@ public class LoginPageSteps {
 		DriverFactory.getDriver().get("http://automationpractice.com/index.php?controller=authentication");
 	}
 	
-	@When("User gets tiltle on Homepage")
+	@When("User gets title on Homepage")
 	public void user_gets_the_title_on_Homepage(){
 		title = loginPage.getLoginPageTitle();
 		System.out.println("Login page of title is " +title);
@@ -28,6 +28,18 @@ public class LoginPageSteps {
 	@Then("Title should be {string}")
 	public void title_should_be(String expectedTitle) {
 		Assert.assertTrue(title.contains(expectedTitle));
+	}
+	
+	@Then("Forgot your password link should be displayed")
+	public void forgot_your_password_link_should_be_displayed() {
+		boolean forgotPassword = loginPage.isForgotPasswordLink();
+		Assert.assertTrue(forgotPassword);
+	}
+	
+	@Then("Create an Account button should be displayed")
+	public void create_an_account_button_should_be_displayed() {
+		boolean createAccount = loginPage.isCreateAccountButton();
+		Assert.assertTrue(createAccount);
 	}
 
 }
