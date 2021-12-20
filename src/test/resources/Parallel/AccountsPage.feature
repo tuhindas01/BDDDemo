@@ -21,7 +21,6 @@ Then User gets Account Section Details
 |Home|
 And Accounts section count should be 5
 
-@SmokeTest
 Scenario: Footer Link Details
 Given User is on Accounts Page
 Then User prints all the footer links
