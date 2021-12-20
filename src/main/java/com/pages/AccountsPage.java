@@ -15,6 +15,7 @@ public class AccountsPage {
 	private TestUtill testUtill = new TestUtill();
 	
 	private By accountSections = By.cssSelector("div#center_column span");
+	private By footerLinks = By.xpath("//section[@id='block_various_links_footer']");
 	
 	public AccountsPage(WebDriver driver) {
 		this.driver = driver;
@@ -42,5 +43,17 @@ public class AccountsPage {
 		return accountList;
 	}
 	
+	public List<String> getFooterLinkList(){
+		List<String> footerLinksList = new ArrayList<>();
+		List<WebElement> footerLinkElementList = testUtill.doGetListOfElements(driver, footerLinks);
+		
+		for(WebElement r : footerLinkElementList) {
+			String footerLinkName = r.getText();
+			footerLinksList.add(footerLinkName);
+			System.out.println(footerLinkName);
+		}
+		
+		return footerLinksList;
+	}
 
 }

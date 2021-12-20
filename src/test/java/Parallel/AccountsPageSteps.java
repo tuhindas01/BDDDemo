@@ -54,4 +54,10 @@ public class AccountsPageSteps {
 		Assert.assertTrue(expectedCount == actualCount);
 	}
 	
+	@Then("User prints all the footer links")
+	public void user_prints_all_the_footer_links() {
+		List<String> footerLinkList = accountsPage.getFooterLinkList();
+		System.out.println("Footer Section List : " +footerLinkList);
+	}
+	
 }
