@@ -3,9 +3,12 @@ package com.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.utill.TestUtill;
+
 public class LoginPage {
 	
 	private WebDriver driver;
+	private TestUtill testUtill = new TestUtill();
 	
 	//By Locators
 	private By emailId = By.id("email");
@@ -21,36 +24,36 @@ public class LoginPage {
 	
 	//Page Methods
 	public String getLoginPageTitle() {
-		String title = driver.getTitle();
+		String title = testUtill.doGetTitle(driver);
 		return title;
 	}
 	
 	public boolean isForgotPasswordLink() {
-		boolean isForgotPwdLinkDispayed = driver.findElement(forgotPassword).isDisplayed();
+		boolean isForgotPwdLinkDispayed = testUtill.doCheckIsDisplayed(testUtill.doFindElement(driver, forgotPassword));
 		return isForgotPwdLinkDispayed;
 	}
 	
 	public boolean isCreateAccountButton() {
-		boolean isCreateAccBtnDispayed = driver.findElement(createAccountButton).isDisplayed();
+		boolean isCreateAccBtnDispayed = testUtill.doCheckIsDisplayed(testUtill.doFindElement(driver, createAccountButton));
 		return isCreateAccBtnDispayed;
 	}
 	
 	public void enterUserName(String username) {
-		driver.findElement(emailId).sendKeys(username);
+		testUtill.doSendKey(testUtill.doFindElement(driver, emailId), username);
 	}
 	
 	public void enterPassword(String pwd) {
-		driver.findElement(password).sendKeys(pwd);
+		testUtill.doSendKey(testUtill.doFindElement(driver, password), pwd);
 	}
 	
 	public void clickOnSignIn() {
-		driver.findElement(signInButton).click();
+		testUtill.doClick(testUtill.doFindElement(driver, signInButton));
 	}
 	
 	public AccountsPage doLogin(String un, String pd) {
-		driver.findElement(emailId).sendKeys(un);
-		driver.findElement(password).sendKeys(pd);
-		driver.findElement(signInButton).click();
+		testUtill.doSendKey(testUtill.doFindElement(driver, emailId), un);
+		testUtill.doSendKey(testUtill.doFindElement(driver, password), pd);
+		testUtill.doClick(testUtill.doFindElement(driver, signInButton));
 		
 		return new AccountsPage(driver);
 	}
