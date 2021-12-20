@@ -9,13 +9,14 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = {"src\\test\\resources\\Parallel"},
-		glue = {"Parallel"},
-		plugin = {"pretty",
+		features = {"src\\test\\resources\\Parallel"}
+		,glue = {"Parallel"}
+		,plugin = {"pretty",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"timeline:test-output-thread/",
 				"rerun:target/rerunfailed.txt"
 				}
+		//,tags = "@SmokeTest"
 		
 		)
 
