@@ -19,8 +19,8 @@ public class LoginPageSteps {
 		DriverFactory.getDriver().get("http://automationpractice.com/index.php?controller=authentication");
 	}
 	
-	@When("User gets title on Homepage")
-	public void user_gets_the_title_on_Homepage(){
+	@When("User gets title of the page")
+	public void user_gets_the_title_of_the_page(){
 		title = loginPage.getLoginPageTitle();
 		System.out.println("Login page of title is " +title);
 	}
@@ -40,6 +40,21 @@ public class LoginPageSteps {
 	public void create_an_account_button_should_be_displayed() {
 		boolean createAccount = loginPage.isCreateAccountButton();
 		Assert.assertTrue(createAccount);
+	}
+	
+	@When("User enters username {string}")
+	public void user_enters_username(String uName) {
+		loginPage.enterUserName(uName);
+	}
+	
+	@When("User enters password {string}")
+	public void user_enters_password(String pWord) {
+		loginPage.enterPassword(pWord);
+	}
+	
+	@When("User clicks on Login button")
+	public void user_clicks_on_login_button() {
+		loginPage.clickOnSignIn();
 	}
 
 }
