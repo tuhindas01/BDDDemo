@@ -17,6 +17,7 @@ public class AccountsPage {
 	private By accountSections = By.cssSelector("div#center_column span");
 	private By footerLinks = By.xpath("//section[@id='block_various_links_footer']");
 	
+	
 	public AccountsPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -54,6 +55,19 @@ public class AccountsPage {
 		}
 		
 		return footerLinksList;
+	}
+	
+	public MyAddressPage clickOnMyAddress() {
+		List<WebElement> accountsSectionList = testUtill.doGetListOfElements(driver, accountSections);
+		
+		for(WebElement g : accountsSectionList) {
+			if(g.getText().equals("MY ADDRESSES")) {
+				g.click();
+				break;
+			}
+		}
+		
+		return new MyAddressPage(driver);
 	}
 
 }
