@@ -1,7 +1,10 @@
 package com.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import com.utill.TestUtill;
 
@@ -22,7 +25,7 @@ public class MyAddressPage {
 	private By mobliePhone = By.id("phone_mobile");
 	private By addressType = By.id("alias");
 	private By saveButton = By.id("submitAddress");
-	
+	private By newAddressBoxSection = By.xpath("//ul[@class='last_item alternate_item box']");
 	
 	public MyAddressPage(WebDriver driver) {
 		this.driver = driver;
@@ -34,6 +37,10 @@ public class MyAddressPage {
 	
 	String[] addressArr = new String[10];
 	public void enterAddressDetails(String[] addressArr) {
+		testUtill.doClear(testUtill.doFindElement(driver, firstName));
+		testUtill.doClear(testUtill.doFindElement(driver, lastName));
+		testUtill.doClear(testUtill.doFindElement(driver, addressType));
+		
 		testUtill.doSendKey(testUtill.doFindElement(driver, firstName), addressArr[0]);
 		testUtill.doSendKey(testUtill.doFindElement(driver, lastName), addressArr[1]);
 		testUtill.doSendKey(testUtill.doFindElement(driver, addressLine1), addressArr[2]);
@@ -44,6 +51,29 @@ public class MyAddressPage {
 		testUtill.doSendKey(testUtill.doFindElement(driver, homePhone), addressArr[7]);
 		testUtill.doSendKey(testUtill.doFindElement(driver, mobliePhone), addressArr[8]);
 		testUtill.doSendKey(testUtill.doFindElement(driver, addressType), addressArr[9]);
+	}
+	
+	public void addressSave() {
+		testUtill.doClick(testUtill.doFindElement(driver, saveButton));
+	}
+	
+	public String getNewAddressSectionHeader(String header) {
+		WebElement newAddressEle =  testUtill.doFindElement(driver, By.xpath("//h3[@class='page-subheading' and contains(text(),'"+header+"')]"));
+		System.out.println("Actual Header: " +newAddressEle.getText());
+		return newAddressEle.getText();
+	}
+	
+	public void deleteNewAddress() {
+		List<WebElement> addressSectionList = testUtill.doGetListOfElements(driver, newAddressBoxSection);
+		
+		for(WebElement e : addressSectionList) {
+			if(e.getText().equals("Delete")) {
+				e.click();
+				break;
+			}
+		}
+		
+		driver.switchTo().alert().accept();
 	}
 
 }

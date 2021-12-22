@@ -27,6 +27,11 @@ public class TestUtill {
 		element.click();
 	}
 	
+	public void doClear(WebElement element) {
+		element.clear();
+	}
+	
+	
 	public boolean doCheckIsDisplayed(WebElement element) {
 		boolean status = element.isDisplayed();
 		return status;
