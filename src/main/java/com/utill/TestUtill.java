@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class TestUtill {
 	
@@ -34,6 +35,11 @@ public class TestUtill {
 	public String doGetTitle(WebDriver driver) {
 		String title = driver.getTitle();
 		return title;
+	}
+	
+	public void doSelectDropdown(WebElement element,String value) {
+		Select selectByValue = new Select(element);
+		selectByValue.selectByValue(value);
 	}
 
 }
