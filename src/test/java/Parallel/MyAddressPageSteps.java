@@ -8,12 +8,16 @@ import com.pages.MyAddressPage;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import junit.framework.Assert;
 
 public class MyAddressPageSteps {
 	
 	private AccountsPage accountsPage = new AccountsPage(DriverFactory.getDriver());
 	private MyAddressPage myAddressPage;
+	
+	private static String header;
 	
 	@Given("User navigates to Address Page")
 	public void user_navigates_to_address_page() {
@@ -26,8 +30,7 @@ public class MyAddressPageSteps {
 	}
 	
 	@When("User enters address details")
-	public void user_enters_address_details(DataTable addressTable) throws InterruptedException {
-		Thread.sleep(3000);
+	public void user_enters_address_details(DataTable addressTable){
 		List<String> addressDataTable = addressTable.asList();
 	
 		String[] strAddressTableArr = new String[addressDataTable.size()];
@@ -37,7 +40,25 @@ public class MyAddressPageSteps {
         }
 		
 		myAddressPage.enterAddressDetails(strAddressTableArr);
-		Thread.sleep(6000);
+	}
+	
+	@When("User clicks on Save button")
+	public void user_clicks_on_save_button() {
+		myAddressPage.addressSave();
+	}
+	
+	@Then("New Address section header should be {string}")
+	public void new_address_section_header_should_be(String expectedHeader) {
+		System.out.println("Expected Header :"+expectedHeader);
+		String actualHeader = myAddressPage.getNewAddressSectionHeader(expectedHeader);
+		Assert.assertEquals(actualHeader, expectedHeader.toUpperCase());
+		
+		myAddressPage.deleteNewAddress();
+	}
+	
+	@Then("User deletes the new address")
+	public void user_deletes_the_new_address() {
+		myAddressPage.deleteNewAddress();
 	}
 
 }

@@ -16,7 +16,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 				"timeline:test-output-thread/",
 				"rerun:target/rerunfailed.txt"
 				}
-		//,tags = "@SmokeTest"
+		,tags = "@SmokeTest"
 		
 		)
 
