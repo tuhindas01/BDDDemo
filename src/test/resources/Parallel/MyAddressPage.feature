@@ -10,7 +10,6 @@ Given User navigates to Address Page
 When User gets title of the page
 Then Title should be "Addresses - My Store"
 
-@SmokeTest
 Scenario: Add additional address
 Given User navigates to Address Page
 When User clicks on Add New Address
