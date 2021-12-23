@@ -69,5 +69,18 @@ public class AccountsPage {
 		
 		return new MyAddressPage(driver);
 	}
+	
+	public PersonalInformationPage clickOnPersonalInformation() {
+		List<WebElement> accountsSectionList = testUtill.doGetListOfElements(driver, accountSections);
+		
+		for(WebElement h : accountsSectionList) {
+			if(h.getText().equals("MY PERSONAL INFORMATION")) {
+				h.click();
+				break;
+			}
+		}
+		
+		return new PersonalInformationPage(driver);
+	}
 
 }
