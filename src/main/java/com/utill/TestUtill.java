@@ -46,5 +46,14 @@ public class TestUtill {
 		Select selectByValue = new Select(element);
 		selectByValue.selectByValue(value);
 	}
+	
+	public String getValuefromTextBox(WebElement element) {
+		return element.getAttribute("value");
+	}
+	
+	public String getValueFromSelectDropdown(WebElement element) {
+		Select select = new Select(element);
+		return select.getFirstSelectedOption().getAttribute("value");
+	}
 
 }
