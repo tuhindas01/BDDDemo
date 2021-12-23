@@ -52,8 +52,6 @@ public class MyAddressPageSteps {
 		System.out.println("Expected Header :"+expectedHeader);
 		String actualHeader = myAddressPage.getNewAddressSectionHeader(expectedHeader);
 		Assert.assertEquals(actualHeader, expectedHeader.toUpperCase());
-		
-		myAddressPage.deleteNewAddress();
 	}
 	
 	@Then("User deletes the new address")

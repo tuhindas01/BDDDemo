@@ -24,6 +24,7 @@ public class DriverFactory {
 			WebDriverManager.firefoxdriver().setup();
 			tlDriver.set(new FirefoxDriver());
 		}
+		
 		else {
 			System.out.println("Please pass the correct browser value: " +browser);
 		}
@@ -39,3 +40,4 @@ public class DriverFactory {
 	}
 
 }
+ 

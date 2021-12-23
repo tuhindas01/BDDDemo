@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.utill.JsExecutorUtill;
 import com.utill.TestUtill;
 
 public class MyAddressPage {
@@ -25,7 +26,8 @@ public class MyAddressPage {
 	private By mobliePhone = By.id("phone_mobile");
 	private By addressType = By.id("alias");
 	private By saveButton = By.id("submitAddress");
-	private By newAddressBoxSection = By.xpath("//ul[@class='last_item alternate_item box']");
+	private By newAddressDlt = By.xpath("//ul[@class='last_item alternate_item box']//a[@title='Delete']");
+	//*[@id="center_column"]/div[1]/div/div[2]/ul/li[9]/a[2]/span
 	
 	public MyAddressPage(WebDriver driver) {
 		this.driver = driver;
@@ -64,15 +66,7 @@ public class MyAddressPage {
 	}
 	
 	public void deleteNewAddress() {
-		List<WebElement> addressSectionList = testUtill.doGetListOfElements(driver, newAddressBoxSection);
-		
-		for(WebElement e : addressSectionList) {
-			if(e.getText().equals("Delete")) {
-				e.click();
-				break;
-			}
-		}
-		
+		testUtill.doClick(testUtill.doFindElement(driver, newAddressDlt));
 		driver.switchTo().alert().accept();
 	}
 
