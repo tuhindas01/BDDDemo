@@ -23,11 +23,10 @@ public class MyAddressPage {
 	private By zipCode = By.id("postcode");
 	private By countryDropDown = By.id("id_country");
 	private By homePhone = By.id("phone");
-	private By mobliePhone = By.id("phone_mobile");
+	private By mobliePhone = By.id("phone_mobile"); 
 	private By addressType = By.id("alias");
 	private By saveButton = By.id("submitAddress");
 	private By newAddressDlt = By.xpath("//ul[@class='last_item alternate_item box']//a[@title='Delete']");
-	//*[@id="center_column"]/div[1]/div/div[2]/ul/li[9]/a[2]/span
 	
 	public MyAddressPage(WebDriver driver) {
 		this.driver = driver;
