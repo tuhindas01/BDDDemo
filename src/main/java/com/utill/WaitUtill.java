@@ -1,5 +1,7 @@
 package com.utill;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +29,10 @@ public class WaitUtill {
 		 new WebDriverWait(driver, timeout).ignoring(StaleElementReferenceException.class)
 				.until(ExpectedConditions.presenceOfElementLocated(locator));
 		
+	}
+	
+	public void pageLoadWait(WebDriver driver, int timeout) {
+		driver.manage().timeouts().pageLoadTimeout(timeout, TimeUnit.SECONDS);
 	}
 	
 
