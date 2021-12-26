@@ -7,7 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.utill.JsExecutorUtill;
 import com.utill.TestUtill;
+import com.utill.WaitUtill;
 
 public class AccountsPage {
 	
@@ -16,6 +18,8 @@ public class AccountsPage {
 	
 	private By accountSections = By.cssSelector("div#center_column span");
 	private By footerLinks = By.xpath("//section[@id='block_various_links_footer']");
+	private By homeButton = By.xpath("//a[@title='Home']");
+	private WaitUtill waitUtill = new WaitUtill();
 	
 	
 	public AccountsPage(WebDriver driver) {
@@ -81,6 +85,13 @@ public class AccountsPage {
 		}
 		
 		return new PersonalInformationPage(driver);
+	}
+	
+	public HomePage navigateHomePage() {
+		JsExecutorUtill.scrollPageDown(driver);
+		waitUtill.waitClickOn(driver, testUtill.doFindElement(driver, homeButton), 30);
+	
+		return new HomePage(driver);
 	}
 
 }

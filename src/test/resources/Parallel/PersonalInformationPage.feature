@@ -10,7 +10,6 @@ Given User navigates to Personal Information Page
 When User gets title of the page
 Then Title should be "Identity - My Store"
 
-@SmokeTest
 Scenario: Validate Personal Information
 Given User navigates to Personal Information Page
 Then User validates Personal Information details
