@@ -26,4 +26,3 @@ Then Title should be "Blouses - My Store"
 Scenario: Get clothing details
 Given User navigates to Home Page
 Then Print all the clothing details
-And Click on the price "$28.98"
