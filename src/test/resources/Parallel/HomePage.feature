@@ -10,7 +10,20 @@ Given User navigates to Home Page
 When User gets title of the page
 Then Title should be "My Store"
 
-@SmokeTest
 Scenario: Click on T-Shirt Link
 Given User navigates to Home Page
 When User clicks on Tshirt link
+And User gets title of the page
+Then Title should be "T-shirts - My Store"
+
+Scenario: Click on Blouses Link
+Given User navigates to Home Page
+When User clicks on Blouses link
+And User gets title of the page
+Then Title should be "Blouses - My Store"
+
+@SmokeTest
+Scenario: Get clothing details
+Given User navigates to Home Page
+Then Print all the clothing details
+And Click on the price "$28.98"

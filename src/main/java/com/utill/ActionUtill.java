@@ -8,7 +8,7 @@ public class ActionUtill {
 	
 	public void doMouseHover(WebDriver driver, WebElement element) {
 		Actions mouseHover = new Actions(driver);
-		mouseHover.moveToElement(element);
+		mouseHover.moveToElement(element).build().perform();
 	}
 
 }
