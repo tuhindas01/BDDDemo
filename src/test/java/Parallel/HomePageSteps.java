@@ -38,9 +38,9 @@ public class HomePageSteps {
 		List<String> list = homePage.getClothingSectionList();
 	}
 	
-	@Then("Click on the price {string}")
-	public void click_on_the_price(String expectedPrice) {
-		homePage.clickOnItemByPrice(expectedPrice);
+	@When("User clicks on Faded Sleeve Tshrit link")
+	public void user_clicks_on_faded_sleeve_tshrit_link() {
+		homePage.clickOnFadedShrotSleeveTshirt();
 	}
 	
 
