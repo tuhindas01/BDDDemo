@@ -47,6 +47,11 @@ public class TestUtill {
 		selectByValue.selectByValue(value);
 	}
 	
+	public void doSelectDropdownByText(WebElement element,String text) {
+		Select selectByText= new Select(element);
+		selectByText.selectByVisibleText(text);
+	}
+	
 	public String getValuefromTextBox(WebElement element) {
 		return element.getAttribute("value");
 	}

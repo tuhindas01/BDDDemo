@@ -26,7 +26,6 @@ Scenario: Get clothing details
 Given User navigates to Home Page
 Then Print all the clothing details
 
-@SmokeTest
 Scenario: Click on Faded Sleeve Tshrit Link
 Given User navigates to Home Page
 When User clicks on Faded Sleeve Tshrit link
