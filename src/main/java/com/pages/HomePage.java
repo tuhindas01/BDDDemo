@@ -22,8 +22,8 @@ public class HomePage {
 	private By tShirtLink = By.xpath("//ul[@class='submenu-container clearfix first-in-line-xs']//a[@title='T-shirts']");
 	private By blouseLink = By.xpath("//ul[@class='submenu-container clearfix first-in-line-xs']//a[@title='Blouses']");
 	private By sectionCloth = By.xpath("//*[@id='homefeatured']");
-	//(//div[@class='right-block']//span[@class='price product-price' and contains(text(),'$28.98')])[1]
-	//(//a[@title='Add to cart' and @data-id-product='5'])[1]
+	private By fadedShrotSleeveTshirt = By.xpath("//*[@id=\"homefeatured\"]/li[1]/div/div[2]/h5/a");
+	
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -57,15 +57,10 @@ public class HomePage {
 		return clothingList;
 	}
 	
-	public void clickOnItemByPrice(String price) {
-		List<WebElement> clothingListSectionList = testUtill.doGetListOfElements(driver, sectionCloth);
+	public FadedSleeveTshirtsPage clickOnFadedShrotSleeveTshirt() {
+		waitUtill.waitClickOn(driver, testUtill.doFindElement(driver, fadedShrotSleeveTshirt), 30);
 		
-		for(WebElement e : clothingListSectionList) {
-			String elemetText = e.getText();
-			if(elemetText.contains(price)) {
-				waitUtill.waitClickOn(driver, e, 20);
-			}
-		}
+		return new FadedSleeveTshirtsPage(driver);
 	}
 
 }
