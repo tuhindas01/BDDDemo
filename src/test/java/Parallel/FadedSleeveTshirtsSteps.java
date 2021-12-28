@@ -1,12 +1,17 @@
 package Parallel;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Assert;
 
 import com.factory.DriverFactory;
 import com.pages.AccountsPage;
+import com.pages.CartPage;
 import com.pages.FadedSleeveTshirtsPage;
 import com.pages.HomePage;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,6 +21,7 @@ public class FadedSleeveTshirtsSteps {
 	private AccountsPage accountsPage = new AccountsPage(DriverFactory.getDriver());
 	private HomePage homePage;
 	private FadedSleeveTshirtsPage fadedSleeveTshirtsPage;
+	private CartPage cartPage;
 	
 	private static String productPrice;
 	
@@ -34,6 +40,34 @@ public class FadedSleeveTshirtsSteps {
 	public void the_price_should_be(String expectedPrice) {
 		System.out.println("Expected price: "+ expectedPrice +" and Actual price: " +productPrice);
 		Assert.assertTrue(expectedPrice.equals(productPrice));
+	}
+	
+	@When("User enters product specifications")
+	public void user_enters_product_specifications(DataTable credTable) {
+		List<Map<String,String>> crdList = credTable.asMaps();
+		String strQuantity = crdList.get(0).get("quantity");
+		String strSize = crdList.get(0).get("size");
+		String strColor = crdList.get(0).get("color");
+		
+		fadedSleeveTshirtsPage.selectProductSpec(strQuantity, strSize, strColor);
+	}
+
+	@When("User clicks on Add to Cart button")
+	public void user_clicks_on_add_to_cart_button() {
+		fadedSleeveTshirtsPage.clickOnAddtoCart();
+	}
+	
+	@When("User clicks on Proceed to Checkout")
+	public void user_clicks_on_proceed_to_checkout() {
+		cartPage = fadedSleeveTshirtsPage.clickOnProceedToCheckout();
+	}
+
+
+	@Then("The {string} should be added on the cart")
+	public void the_should_be_added_on_the_cart(String product) {
+		System.out.println("Expected String: "+product);
+		boolean result = cartPage.validateProductNameFromTable(product);
+		Assert.assertTrue(result);
 	}
 
 }
