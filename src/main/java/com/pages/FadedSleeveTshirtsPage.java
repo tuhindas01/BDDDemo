@@ -26,9 +26,8 @@ public class FadedSleeveTshirtsPage {
 		return testUtill.doFindElement(driver, displayPrice).getText();
 	}
 	
-	public void selectProductSpec(int quatity, String size, String color) {
-		String s = String.valueOf(quatity);
-		testUtill.doSendKey(testUtill.doFindElement(driver, quantityBox), s);
+	public void selectProductSpec(String quatity, String size, String color) {
+		testUtill.doSendKey(testUtill.doFindElement(driver, quantityBox), quatity);
 		testUtill.doSelectDropdownByText(testUtill.doFindElement(driver, sizeDropDown), size);
 		testUtill.doClick(testUtill.doFindElement(driver, By.xpath("//a[@name='"+color+"']")));
 	}
@@ -37,8 +36,10 @@ public class FadedSleeveTshirtsPage {
 		testUtill.doClick(testUtill.doFindElement(driver, addToCartBtn));
 	}
 	
-	public void clickOnProceedToCheckout() {
+	public CartPage clickOnProceedToCheckout() {
 		waitUtill.waitClickOn(driver, testUtill.doFindElement(driver, proceedToCheckOut), 30);
+		
+		return new CartPage(driver);
 	}
 
 
