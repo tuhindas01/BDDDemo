@@ -1,5 +1,6 @@
 package com.pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -19,26 +20,22 @@ public class CartPage {
 		this.driver = driver;
 	}
 	
-	public boolean validateProductNameFromTable(String productName) {
-		boolean status = false;
-		System.out.println("Expected: "+productName);
+	public List<String> getProductDetailsFromTable() {
 		WebElement productTable = testUtill.doFindElement(driver, productTableLocator);
 		
 		List<WebElement> productRows = productTable.findElements(By.tagName("tr"));
+		List<String> list = new ArrayList<String>();
 		
 		for(int i=0;i<productRows.size();i++) {
 			List<WebElement> productCols = productRows.get(i).findElements(By.tagName("td"));
 			for(int j=0;j<productCols.size();j++) {
 				String cellText = productCols.get(j).getText();	
 				System.out.println(productCols.get(j).getText());
-				if(cellText.equals(productName)) {
-					System.out.println("Actual: "+cellText);
-					status = true;
-				}
+				list.add(cellText);
 			}
 		}
 		
-		return status;
+		return list;
 	}
 
 }
