@@ -65,9 +65,20 @@ public class FadedSleeveTshirtsSteps {
 
 	@Then("The {string} should be added on the cart")
 	public void the_should_be_added_on_the_cart(String product) {
+		boolean status = false;
+		
 		System.out.println("Expected String: "+product);
-		boolean result = cartPage.validateProductNameFromTable(product);
-		Assert.assertTrue(result);
+		List<String> productDetails = cartPage.getProductDetailsFromTable();
+		System.out.println(productDetails);
+		
+		for(int i=0;i<productDetails.size();i++) {
+			if(productDetails.get(i).contains(product)) {
+				status = true;
+				break;
+			}
+		}
+		
+		Assert.assertTrue(status);
 	}
 
 }
