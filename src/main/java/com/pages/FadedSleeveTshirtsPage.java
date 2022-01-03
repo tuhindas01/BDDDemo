@@ -17,6 +17,7 @@ public class FadedSleeveTshirtsPage {
 	private By displayPrice = By.id("our_price_display");
 	private By quantityBox = By.id("quantity_wanted");
 	private By sizeDropDown = By.id("group_1");
+	
 
 	public FadedSleeveTshirtsPage(WebDriver driver) {
 		this.driver = driver;
@@ -27,6 +28,7 @@ public class FadedSleeveTshirtsPage {
 	}
 	
 	public void selectProductSpec(String quatity, String size, String color) {
+		testUtill.doClear(testUtill.doFindElement(driver, quantityBox));
 		testUtill.doSendKey(testUtill.doFindElement(driver, quantityBox), quatity);
 		testUtill.doSelectDropdownByText(testUtill.doFindElement(driver, sizeDropDown), size);
 		testUtill.doClick(testUtill.doFindElement(driver, By.xpath("//a[@name='"+color+"']")));
@@ -41,6 +43,5 @@ public class FadedSleeveTshirtsPage {
 		
 		return new CartPage(driver);
 	}
-
 
 }

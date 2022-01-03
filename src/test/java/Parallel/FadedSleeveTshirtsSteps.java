@@ -80,5 +80,11 @@ public class FadedSleeveTshirtsSteps {
 		
 		Assert.assertTrue(status);
 	}
+	
+	@Then("User clicks on continue shopping")
+	public void user_clicks_on_continue_shopping() {
+		cartPage.clickOnContinueShoppingButton();
+	}
+
 
 }
