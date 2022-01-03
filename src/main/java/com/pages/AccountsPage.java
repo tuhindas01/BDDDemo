@@ -15,12 +15,12 @@ public class AccountsPage {
 	
 	private WebDriver driver;
 	private TestUtill testUtill = new TestUtill();
+	private WaitUtill waitUtill = new WaitUtill();
 	
 	private By accountSections = By.cssSelector("div#center_column span");
 	private By footerLinks = By.xpath("//section[@id='block_various_links_footer']");
-	private By homeButton = By.xpath("//a[@title='Home']");
-	private WaitUtill waitUtill = new WaitUtill();
-	
+	private By homeButton = By.xpath("//a[@title='Home']");	
+	private By cartButtonTab = By.xpath("//a[@title='View my shopping cart']");
 	
 	public AccountsPage(WebDriver driver) {
 		this.driver = driver;
@@ -93,5 +93,12 @@ public class AccountsPage {
 	
 		return new HomePage(driver);
 	}
+	
+	public CartPage clickOnAddToCartTab() {
+		testUtill.doClick(testUtill.doFindElement(driver, cartButtonTab));
+		
+		return new CartPage(driver);
+	}
+
 
 }
