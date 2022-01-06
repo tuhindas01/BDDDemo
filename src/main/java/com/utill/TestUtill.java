@@ -31,6 +31,10 @@ public class TestUtill {
 		element.clear();
 	}
 	
+	public String getTextFromElement(WebElement element) {
+		return element.getText();
+	}
+	
 	
 	public boolean doCheckIsDisplayed(WebElement element) {
 		boolean status = element.isDisplayed();
@@ -52,6 +56,11 @@ public class TestUtill {
 		selectByText.selectByVisibleText(text);
 	}
 	
+	public void doSelectDropdown(WebElement element,int index) {
+		Select selectByValue = new Select(element);
+		selectByValue.selectByIndex(index);;
+	}
+	
 	public String getValuefromTextBox(WebElement element) {
 		return element.getAttribute("value");
 	}
@@ -60,5 +69,6 @@ public class TestUtill {
 		Select select = new Select(element);
 		return select.getFirstSelectedOption().getAttribute("value");
 	}
+	
 
 }

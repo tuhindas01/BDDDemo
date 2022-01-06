@@ -11,6 +11,10 @@ Given User navigates to Contact Us Page
 When User gets title of the page
 Then Title should be "Contact us - My Store"
 
+<<<<<<< HEAD
+=======
+@SmokeTest
+>>>>>>> b26e4e3211cf2d2315d7b8b2e7933c9d5098feb2
 Scenario Outline: Contact Us Scenario with different set of data
 Given  User navigates to Contact Us Page
 When User fills the form from the given sheetname <SheetName> and rownumber <RowNumber>
