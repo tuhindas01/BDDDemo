@@ -3,6 +3,7 @@ package com.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.utill.JsExecutorUtill;
 import com.utill.TestUtill;
 
 public class LoginPage {
@@ -14,7 +15,7 @@ public class LoginPage {
 	private By emailId = By.id("email");
 	private By password = By.id("passwd");
 	private By signInButton = By.id("SubmitLogin");
-	private By forgotPassword = By.linkText("Forgot your password?");
+	private By forgotPassword = By.xpath("//a[contains(text(),'Forgot your password?')]");
 	private By createAccountButton = By.id("SubmitCreate");
 	
 	//Constructor
@@ -29,6 +30,7 @@ public class LoginPage {
 	}
 	
 	public boolean isForgotPasswordLink() {
+		JsExecutorUtill.scrollPageDown(driver);
 		boolean isForgotPwdLinkDispayed = testUtill.doCheckIsDisplayed(testUtill.doFindElement(driver, forgotPassword));
 		return isForgotPwdLinkDispayed;
 	}
