@@ -21,6 +21,7 @@ public class AccountsPage {
 	private By footerLinks = By.xpath("//section[@id='block_various_links_footer']");
 	private By homeButton = By.xpath("//a[@title='Home']");	
 	private By cartButtonTab = By.xpath("//a[@title='View my shopping cart']");
+	private By contactUsLink = By.xpath("//div[@id='contact-link']//a[contains(text(),'Contact us')]");
 	
 	public AccountsPage(WebDriver driver) {
 		this.driver = driver;
@@ -98,6 +99,12 @@ public class AccountsPage {
 		testUtill.doClick(testUtill.doFindElement(driver, cartButtonTab));
 		
 		return new CartPage(driver);
+	}
+	
+	public ContactUsPage clickOnContactUsLink() {
+		testUtill.doClick(testUtill.doFindElement(driver, contactUsLink));
+		
+		return new ContactUsPage(driver);
 	}
 
 
