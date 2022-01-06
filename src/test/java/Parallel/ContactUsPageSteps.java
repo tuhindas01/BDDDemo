@@ -30,7 +30,7 @@ public class ContactUsPageSteps {
 	@When("User fills the form from the given sheetname ContactUs and rownumber {int}")
 	public void user_fills_the_form_from_the_given_sheetname_contact_us_and_rownumber(Integer rowNumber) throws InvalidFormatException, IOException {
 		ExcelReaderUtill reader = new ExcelReaderUtill();
-		List<Map<String,String>> testData = reader.getData("C:\\Users\\dastu\\eclipse-workspace\\BDDFramework\\src\\test\\resources\\InputSheets\\contactUsDetails.xlsx", "ContactUs");
+		List<Map<String,String>> testData = reader.getData(".\\src\\test\\resources\\InputSheets\\contactUsDetails.xlsx", "ContactUs");
 		
 		String heading = testData.get(rowNumber).get("subjectheading");
 		String emailId = testData.get(rowNumber).get("email");
